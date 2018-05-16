@@ -4,10 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import './styles/reset.less'
-import { Button, Row, Col, Swipe, SwipeItem } from 'vant'
-import ecslide from './components/common/index'
-Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem)
-Vue.use(ecslide)
+import { Button, Row, Col, Swipe, SwipeItem, Lazyload } from 'vant'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload)
 
 Vue.config.productionTip = false
 
@@ -17,4 +19,4 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
-})
+});
