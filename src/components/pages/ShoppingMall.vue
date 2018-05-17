@@ -52,7 +52,7 @@
             <div class="recommend-item">
               <img :src="item.image" width="80%" />
               <div class="title">{{item.goodsName}}</div>
-              <div class="price">￥{{item.price}} <span>(￥{{item.mallPrice}})</span></div>
+              <div class="price">￥{{item.price | moneyFilter}} <span>(￥{{item.mallPrice | moneyFilter}})</span></div>
             </div>
           </swiper-slide>
         </swiper>
@@ -104,14 +104,38 @@
         </div>
       </div>
     </div>
+    <!--Hot Area-->
+    <div class="hot-area">
+      <div class="pb_title">热卖商品</div>
+      <div class="hot-goods">
+        <!--这里需要一个list组件-->
+        <van-list v-model="loading" :finished="finished" @load="onLoad" :immediate-check="false">
+          <div class="goods-list" style="overflow: hidden;">
+            <goods-info
+              v-for="( item, index) in hotGoods" :key="index"
+              :goodsImage="item.image"
+              :goodsName="item.name"
+              :goodsPrice="item.price"
+            ></goods-info>
+          </div>
+        </van-list>
+        <divider v-if="finished" content="没有更多数据了QAQ"></divider>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+  import {toMoney} from '../../filters/index'
   import {getHome} from '../../ajax/api'
+  import goodsInfo from './common/goodsInfo'
+  import divider from '../public/divider/divider'
+  import {goods} from '../../mock/index'
   export default {
     data() {
       return {
+        loading: false,
+        finished: false,
         swiperOption: {
           freeMode: true,
           slidesPerView: 'auto',
@@ -128,10 +152,12 @@
         floor1: [],
         floor2: [],
         floor3: [],
-        floorName:[]
+        floorName:[],
+        hotGoods:[]
       }
     },
     components:{
+      goodsInfo, divider
     },
     mounted () {
       getHome().then((res) => {
@@ -142,7 +168,24 @@
         this.floor2 = res.data.floor2;
         this.floor3 = res.data.floor3;
         this.floorName = res.data.floorName;
+        this.hotGoods = res.data.hotGoods
       })
+    },
+    filters: {
+      moneyFilter (money) {
+        return toMoney(money)
+      }
+    },
+    methods: {
+      onLoad() {
+        setTimeout(() => {
+          this.loading = false;
+          this.hotGoods = [...this.hotGoods, ...goods];
+          if (this.hotGoods.length >= 60) {
+            this.finished = true;
+          }
+        }, 2000);
+      }
     }
   }
 </script>
@@ -197,20 +240,29 @@
   .recommend-area{
     background-color: #fff; .mgb(10);
     .recommend-title{
-      border-bottom:1px solid @base_border_color;
+      position: relative;
       font-size:14px;
       padding:.2rem;
       color:@base_color;
+      &:before{
+        .bottom-line(@base_border_color)
+      }
     }
     .recommend-body{
-      border-bottom: 1px solid @base_border_color;
+      position: relative;
+      &:before{
+        .bottom-line(@base_border_color)
+      }
     }
     .recommend-item{
       width:99%;
-      border-right: 1px solid @base_border_color;
+      position: relative;
       font-size: 12px;
       text-align: center;
       padding: 10/72rem 0;
+      &:before{
+        .right-line(@base_border_color)
+      }
       .title{
         .mgb(10); color: @base_text_color; padding: 0 20/72rem;
         .text-overflow();
@@ -294,6 +346,13 @@
       }
     }
   }
+
+  .hot-area{
+    .hot-goods{
+
+    }
+  }
+
   .pb_title{
     position: relative;
     padding: .2rem;
