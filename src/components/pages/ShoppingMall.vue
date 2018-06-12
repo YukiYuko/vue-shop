@@ -32,7 +32,7 @@
     </div>
     <!--type layout-->
     <ul class="type">
-      <li v-for="(item, index) in category">
+      <li v-for="(item, index) in category" v-if="category.length">
         <img :src="item.image" :alt="item.mallCategoryName">
         <div>{{item.mallCategoryName}}</div>
       </li>
@@ -46,7 +46,7 @@
       <div class="recommend-title">
         商品推荐
       </div>
-      <div class="recommend-body">
+      <div class="recommend-body" v-if="recommendGoods.length">
         <swiper :options="swiperOption">
           <swiper-slide v-for=" (item, index) in recommendGoods" :key="index">
             <div class="recommend-item">
@@ -59,29 +59,29 @@
       </div>
     </div>
     <!-- floor1 -->
-    <div class="floor floor1">
+    <div class="floor floor1" v-if="floor1.length">
       <div class="pb_title">
-        {{this.floorName && this.floorName.floor1}}
+        {{floorName && floorName.floor1}}
       </div>
       <div class="head" flex>
         <div class="left" box="1">
-          <img :src="floor1 && floor1.length && floor1[0].image" alt="">
+          <img :src="floor1[0] && floor1[0].image" alt="">
         </div>
         <div class="right" box="1">
-          <div> <img :src="floor1 && floor1.length && floor1[1].image" alt=""> </div>
-          <div> <img :src="floor1 && floor1.length && floor1[2].image" alt=""> </div>
+          <div> <img :src="floor1[1] && floor1[1].image" alt=""> </div>
+          <div> <img :src="floor1[2] && floor1[2].image" alt=""> </div>
         </div>
       </div>
       <div class="foot" flex>
-        <div> <img :src="floor1 && floor1.length && floor1[3].image" alt=""> </div>
-        <div> <img :src="floor1 && floor1.length && floor1[4].image" alt=""> </div>
-        <div> <img :src="floor1 && floor1.length && floor1[5].image" alt=""> </div>
+        <div> <img :src="floor1[3] && floor1[3].image" alt=""> </div>
+        <div> <img :src="floor1[4] && floor1[4].image" alt=""> </div>
+        <div> <img :src="floor1[5] && floor1[5].image" alt=""> </div>
       </div>
     </div>
     <!-- floor2 -->
-    <div class="floor floor2">
+    <div class="floor floor2" v-if="floor2.length">
       <div class="pb_title">
-        {{this.floorName && this.floorName.floor2}}
+        {{floorName && floorName.floor2}}
       </div>
       <div class="yd-list">
         <div class="yd-list-item" v-for="(item, index) in floor2" :key="index">
@@ -92,9 +92,9 @@
       </div>
     </div>
     <!-- floor3 -->
-    <div class="floor floor3">
+    <div class="floor floor3" v-if="floor3.length">
       <div class="pb_title">
-        {{this.floorName && this.floorName.floor3}}
+        {{floorName && floorName.floor3}}
       </div>
       <div class="yd-list">
         <div class="yd-list-item" v-for="(item, index) in floor3" :key="index">
@@ -160,6 +160,12 @@
       goodsInfo, divider
     },
     mounted () {
+      const toast = this.$toast.loading({
+        duration: 0,       // 持续展示 toast
+        forbidClick: true, // 禁用背景点击
+        loadingType: 'spinner',
+        message: '加载中...'
+      });
       getHome().then((res) => {
         this.category = res.data.category;
         this.adBanner = res.data.advertesPicture;
@@ -168,7 +174,8 @@
         this.floor2 = res.data.floor2;
         this.floor3 = res.data.floor3;
         this.floorName = res.data.floorName;
-        this.hotGoods = res.data.hotGoods
+        this.hotGoods = res.data.hotGoods;
+        toast.clear()
       })
     },
     filters: {

@@ -1,121 +1,121 @@
-export const goods = [{
-  "mallPrice": 12,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171205181048_5346.jpg",
-  "goodsId": "22fece1309b547069fedb8bfd4a9a855",
-  "price": 15,
-  "name": "越南火龙果（大）1*2(约1000g)"
+export const goods =  [{
+  "mallPrice": 3.90,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415120500_6504.jpg",
+  "goodsId": "fb0f913950944b66a97ae262ad14609a",
+  "price": 3.90,
+  "name": "美汁源果粒奶优水果饮料蜜桃450ml/瓶"
 }, {
-  "mallPrice": 24,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171205184329_5939.jpg",
-  "goodsId": "c68a7668cceb4168ab48ae0aa312a67d",
-  "price": 28,
-  "name": "越南红心火龙果1*2（约1200g）"
+  "mallPrice": 4.50,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415115202_8432.jpg",
+  "goodsId": "775e575ce28a4f89b1dfe2c99eb08ae7",
+  "price": 4.50,
+  "name": "阿华田麦芽乳饮品牛奶味250mL/盒"
 }, {
-  "mallPrice": 69,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171202191555_2504.jpg",
-  "goodsId": "27f616c8ec0346a6ae7a3667da2ac345",
-  "price": 75,
-  "name": "多宝鱼 1.5斤左右"
+  "mallPrice": 3.70,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415121351_6470.jpg",
+  "goodsId": "e68d5293c0a04e99a3480aaaad101362",
+  "price": 3.70,
+  "name": "养元香浓六个核桃240ml/瓶"
 }, {
-  "mallPrice": 599,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171202193122_6064.jpg",
-  "goodsId": "f0bc788839ab4ef6ac2adbaa4d8b6074",
-  "price": 650,
-  "name": "阿拉斯加帝王蟹 3斤左右"
+  "mallPrice": 6.50,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415120956_8491.jpg",
+  "goodsId": "7c377350cc9342edba600f3f6a548bd0",
+  "price": 6.50,
+  "name": "名屋木瓜牛乳340ml/瓶"
 }, {
-  "mallPrice": 69,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171203114951_1503.jpg",
-  "goodsId": "06cdf782f37c41b3b4b93e92999c483c",
-  "price": 80,
-  "name": "面包蟹 400g"
+  "mallPrice": 3.90,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415120411_5740.jpg",
+  "goodsId": "f8c3f62810aa4ce781d14a885333a2b8",
+  "price": 3.90,
+  "name": "美汁源果粒奶优草莓味450ml/瓶"
 }, {
-  "mallPrice": 30,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171203104023_7397.jpg",
-  "goodsId": "f6e283eb6df44637ae3d0c83e8bd04cd",
-  "price": 38,
-  "name": "虾夷扇贝 10个/份"
+  "mallPrice": 7.50,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415120720_7233.jpg",
+  "goodsId": "85d4fece907a4170b4b27a22c035321d",
+  "price": 7.50,
+  "name": "名屋醇豆浆饮料485ml/瓶"
 }, {
-  "mallPrice": 199,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171202192043_3528.jpg",
-  "goodsId": "2199b4bb56d247a1b044d5e7d902c942",
-  "price": 258,
-  "name": "波士顿活龙虾 1.5斤左右"
+  "mallPrice": 5.00,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180103161335_9324.jpg",
+  "goodsId": "9abd33f0d2e4496f9c023a1dcfbfe2ad",
+  "price": 6.30,
+  "name": "李子园甜牛奶乳饮料450ml/瓶"
 }, {
-  "mallPrice": 59.8,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171203114752_9000.jpg",
-  "goodsId": "24692e32d27241d095bbfc59106a4229",
-  "price": 60,
-  "name": "蓝雪阿根廷红虾500g"
+  "mallPrice": 5.00,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415120239_7917.jpg",
+  "goodsId": "1258c2fd52844f679fad1ebf24764082",
+  "price": 5.00,
+  "name": "李子园草莓风味乳饮料450ml/瓶"
 }, {
-  "mallPrice": 5.9,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171202195326_3617.jpg",
-  "goodsId": "51a1bd1b303e4bd1a97207d87fc1679e",
-  "price": 11.96,
-  "name": "河北皇冠梨 1*4(约1000g)"
+  "mallPrice": 6.30,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20171224082006_6602.jpg",
+  "goodsId": "bd25fd5d128e41fd9a737e99f75f92f8",
+  "price": 8.50,
+  "name": "娃哈哈AD钙奶220ml*4/条"
 }, {
-  "mallPrice": 7.9,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171202195522_6328.jpg",
-  "goodsId": "9f0fc88cbd5948a4a18d575f15710e62",
-  "price": 9,
-  "name": "会理石榴 1*2(约750g)"
+  "mallPrice": 6.00,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415121537_4372.jpg",
+  "goodsId": "cfbe6ec3101a414f9563a8c6624aec08",
+  "price": 6.00,
+  "name": "一榨鲜绿豆汁300ml/瓶"
 }, {
-  "mallPrice": 12.5,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171202195038_3052.jpg",
-  "goodsId": "b919351e5c2b4a3b9c6791d296934c32",
-  "price": 15,
-  "name": "福建红肉蜜柚 1*2(约1900g)"
+  "mallPrice": 5.00,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415120109_275.jpg",
+  "goodsId": "e9808eb0d3574c11971e38f75076f1a4",
+  "price": 5.00,
+  "name": "李子园朱古力风味乳饮料450ml/瓶"
 }, {
-  "mallPrice": 0.1,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171202194910_6992.jpg",
-  "goodsId": "9f30e1eff327400d8ad961d0e91b0ecd",
-  "price": 14,
-  "name": "四川不知火丑桔 1*4(约1000g)"
+  "mallPrice": 7.50,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415120857_4885.jpg",
+  "goodsId": "a5d1130de39f434facc6d35514cea053",
+  "price": 7.50,
+  "name": "名屋黑豆浆饮料485ml/瓶"
 }, {
-  "mallPrice": 10,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171202195211_6237.jpg",
-  "goodsId": "6a2a46ff7657441eaa6ccc6136988da3",
-  "price": 12,
-  "name": "海南木瓜 1*1(约1000g)"
+  "mallPrice": 4.50,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415114959_7217.jpg",
+  "goodsId": "06130c91497b4806bf2b3e538814bb66",
+  "price": 4.50,
+  "name": "阿华田麦芽乳饮品高钙味250mL/盒"
 }, {
-  "mallPrice": 7.9,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171203143559_7124.jpg",
-  "goodsId": "bedfd4bc4d5d46cea41f10355a702a58",
-  "price": 9,
-  "name": "君乐宝纯享原味发酵乳330g"
+  "mallPrice": 6.50,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415121108_2001.jpg",
+  "goodsId": "b75e437adc0540c6b30516537d759122",
+  "price": 6.50,
+  "name": "名屋香蕉牛乳340ml/瓶"
 }, {
-  "mallPrice": 10,
-  "image": "http://images.baixingliangfan.cn/compressedPic/20171214162416_6642.jpg",
-  "goodsId": "cb3695e66bdc4ac48c5d1d0f28af18dc",
-  "price": 46,
-  "name": "完达山炭烧酸奶180g*16袋/箱"
+  "mallPrice": 3.90,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415120608_2319.jpg",
+  "goodsId": "0d51d2863bdc485688c2fee2a165bb51",
+  "price": 3.90,
+  "name": "美汁源果粒奶优原味450ml/瓶"
 }, {
-  "mallPrice": 5.5,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171202194452_1506.jpg",
-  "goodsId": "0ab2a0cbb439407e8f90d558a070428d",
-  "price": 5.5,
-  "name": "蒙牛纯甄经典原味酸牛奶200g"
+  "mallPrice": 7.40,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20171224082144_8430.jpg",
+  "goodsId": "85173b3ce7a24a44ac2ed960a3e431fc",
+  "price": 9.00,
+  "name": "旺仔牛奶125ml*4/条"
 }, {
-  "mallPrice": 22.9,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171203104704_3666.jpg",
-  "goodsId": "3df3bf7632f74433bf54a1acc5358b42",
-  "price": 26,
-  "name": "北大荒绿野有机红小豆390g"
+  "mallPrice": 68.00,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415122117_1031.jpg",
+  "goodsId": "99e37959ae22433da7bb378a2d24c19c",
+  "price": 68.00,
+  "name": "同福阿胶粥300g/箱"
 }, {
-  "mallPrice": 13.8,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171203140454_6054.jpg",
-  "goodsId": "2ae28f2ec5f14e9e9f29dfbff0fb10d4",
-  "price": 16,
-  "name": "思念手打天下猪肉香菇水饺495g"
+  "mallPrice": 3.50,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415122256_2373.jpg",
+  "goodsId": "068fe09cf2a849b4b8c7ce3fea734072",
+  "price": 3.50,
+  "name": "银鹭桂圆莲子八宝粥360g/瓶"
 }, {
-  "mallPrice": 8.6,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171203135946_7143.jpg",
-  "goodsId": "2a4763fa31cb457481737b9ede14f841",
-  "price": 10.5,
-  "name": "双汇大肉块俄式风味香肠30g*8"
+  "mallPrice": 14.50,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415121432_880.jpg",
+  "goodsId": "8172961149434b51865612820c7b8891",
+  "price": 14.50,
+  "name": "椰树牌椰汁饮料1L/瓶"
 }, {
-  "mallPrice": 53.8,
-  "image": "http://baixing.kuaihejiu.com/compressedPic/20171203105342_4361.jpg",
-  "goodsId": "2c8ad2805463498592910919e4d51260",
-  "price": 58,
-  "name": "金健东北贡米5kg"
-}];
+  "mallPrice": 4.50,
+  "image": "http://images.baixingliangfan.cn/compressedPic/20180415115515_7254.jpg",
+  "goodsId": "a870459dfbba4df8af52e52aa6d0c426",
+  "price": 4.50,
+  "name": "豆本豆原味豆奶250ml/盒"
+}]

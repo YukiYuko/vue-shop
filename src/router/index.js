@@ -8,6 +8,6 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {path: '/',name: 'ShoppingMall',component: ShoppingMall},
-    {path: '/',name: 'register',component: Register},
+    {path: '/register',name: 'register',component: Register},
   ]
 })
