@@ -15,7 +15,7 @@
         </van-col>
         <van-col span="5">
           <div class="search">
-            <van-button size="mini">查找</van-button>
+            <van-button @click="go" size="mini">查找</van-button>
           </div>
         </van-col>
       </van-row>
@@ -192,6 +192,9 @@
             this.finished = true;
           }
         }, 2000);
+      },
+      go () {
+        this.$router.push('/register')
       }
     }
   }
