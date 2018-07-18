@@ -13,7 +13,7 @@ const {connect , initSchemas} = require('./database/init.js')
 //立即执行函数
 ;(async () =>{
   await connect();
-  initSchemas();
+  // initSchemas();
   router.use('/user',user.routes());
   app.use(bodyParser());
   app.use(cors());

@@ -56,7 +56,7 @@ exports.initSchemas = () =>{
   // __dirname 表示当前执行脚本所在的目录。
   // 同步获取匹配文件列表:
   let files = glob.sync(resolve(__dirname,'./schema/','**/*.js'));
-  console.log(__dirname);
+  console.log(files);
   // 获取之后同时引入 所有的schema文件
   files.forEach(require)
 };
