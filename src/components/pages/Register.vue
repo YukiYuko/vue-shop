@@ -48,15 +48,21 @@
           duration: 0
         });
         register(data).then((res) => {
+          console.log(res)
           setTimeout(() => {
             toast.clear();
-            this.$dialog.alert({
-              message: '注册成功',
-              beforeClose: (action, done) => {
-                done();
-                this.$router.push('login');
-              }
-            });
+            if (res.code === 200) {
+              this.$dialog.alert({
+                message: '注册成功',
+                beforeClose: (action, done) => {
+                  done();
+                  this.$router.push('login');
+                }
+              });
+            } else {
+              console.log(res.message);
+              this.$toast.fail('注册失败')
+            }
           }, 1000);
         }).catch((res) => {
           alert(res)
