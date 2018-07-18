@@ -12,10 +12,10 @@ router.use('/user',user.routes());
 //   ctx.body = '<h1>Hello koa2</h1>';
 // });
 
-app.use(router.routes());
-app.use(router.allowedMethods());
 app.use(bodyParser());
 app.use(cors());
+app.use(router.routes());
+app.use(router.allowedMethods());
 // //引入connect
 // const {connect , initSchemas} = require('./database/init.js')
 //

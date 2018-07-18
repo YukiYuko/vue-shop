@@ -70,12 +70,12 @@ axios.interceptors.response.use(response => {
   return Promise.resolve(error.response)
 })
 
-axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = '/api';
 //设置默认请求头
 axios.defaults.headers = {
   'X-Requested-With': 'XMLHttpRequest'
-}
-axios.defaults.timeout = 10000
+};
+axios.defaults.timeout = 10000;
 
 export default {
   //get请求

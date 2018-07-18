@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="用户注册" left-text="返回" left-arrow @click-left="goBack"></van-nav-bar>
+    <van-nav-bar title="用户登录" left-text="返回" left-arrow @click-left="goBack"></van-nav-bar>
 
     <div class="register-panel">
       <van-field
@@ -20,7 +20,7 @@
         required
       ></van-field>
       <div class="register-button">
-        <van-button @click="toReg" type="primary" size="large">马上注册</van-button>
+        <van-button @click="toReg" type="primary" size="large">马上登录</van-button>
       </div>
     </div>
 
@@ -42,25 +42,14 @@
       },
       toReg() {
         let data = {username: this.username, password: this.password};
-        let toast = this.$toast.loading({
-          mask: true,
-          message: '加载中...',
-          duration: 0
+        // let toast = this.$toast.loading({
+        //   mask: true,
+        //   message: '加载中...',
+        //   duration: 0
+        // });
+        this.$dialog.alert({
+          message: '登录成功'
         });
-        register(data).then((res) => {
-          setTimeout(() => {
-            toast.clear();
-            this.$dialog.alert({
-              message: '注册成功',
-              beforeClose: (action, done) => {
-                done();
-                this.$router.push('login');
-              }
-            });
-          }, 1000);
-        }).catch((res) => {
-          alert(res)
-        })
       }
     },
   }
