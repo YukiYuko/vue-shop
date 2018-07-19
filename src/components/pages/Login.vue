@@ -38,6 +38,18 @@
         openLoading: false,
       }
     },
+    created () {
+      let user_info = null;
+      localForage.getItem('user_info').then((value) => {
+        user_info = value;
+        if (user_info) {
+          this.$toast.success('您已经登录');
+          setTimeout(() => {
+            this.$router.push('/')
+          }, 1000);
+        }
+      })
+    },
     methods: {
       goBack() {
         this.$router.go(-1)

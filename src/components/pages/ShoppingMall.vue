@@ -122,6 +122,9 @@
         <divider v-if="finished" content="没有更多数据了QAQ"></divider>
       </div>
     </div>
+
+    <!--tabbar-->
+    <tabbar @click="switch_page"></tabbar>
   </div>
 </template>
 
@@ -130,7 +133,9 @@
   import {getHome} from '../../ajax/api'
   import goodsInfo from './common/goodsInfo'
   import divider from '../public/divider/divider'
+  import tabbar from '../public/Tabbar/Tabbar'
   import {goods} from '../../mock/index'
+  import localForage from "localforage"
   export default {
     data() {
       return {
@@ -157,7 +162,7 @@
       }
     },
     components:{
-      goodsInfo, divider
+      goodsInfo, divider, tabbar
     },
     mounted () {
       const toast = this.$toast.loading({
@@ -195,6 +200,18 @@
       },
       go () {
         this.$router.push('/register')
+      },
+      // 切换页面
+      switch_page (page) {
+        let user_info = null;
+        localForage.getItem('user_info').then((value) => {
+          user_info = value;
+          if (!user_info && (page === 'car' || page === 'mine')) {
+            this.$router.push('login');
+          } else {
+            console.log('进入对应页面')
+          }
+        });
       }
     }
   }

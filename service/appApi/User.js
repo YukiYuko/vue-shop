@@ -52,7 +52,7 @@ router.post('/login',async(ctx)=>{
         .then( (isMatch)=>{
           //返回比对结果
           if (isMatch) {
-            ctx.body={ code:200, message:isMatch}
+            ctx.body={ code:200, message:'登录成功'}
           } else {
             ctx.body={ code:201, message:'密码不正确'}
           }
