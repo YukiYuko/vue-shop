@@ -6,6 +6,7 @@ const cors = require('koa2-cors');
 const port = 3000;
 const mongoose = require('mongoose');
 let user = require('./appApi/User');
+let goods = require('./appApi/Goods');
 let router = new Router();
 //引入connect
 const {connect , initSchemas} = require('./database/init.js')
@@ -15,6 +16,7 @@ const {connect , initSchemas} = require('./database/init.js')
   await connect();
   initSchemas();
   router.use('/user',user.routes());
+  router.use('/goods',goods.routes());
   app.use(bodyParser());
   app.use(cors());
   app.use(router.routes());
