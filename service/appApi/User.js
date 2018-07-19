@@ -5,8 +5,9 @@ let router = new Router();
 router.get('/', async(ctx) => {
   ctx.body = '用户操作首页';
 });
-router.post('/register',async(ctx)=>{
 
+// 用户注册
+router.post('/register',async(ctx)=>{
   // 取得model
   const User = mongoose.model('User');
   //把从前端接收的POST数据封装成一个新的user对象
@@ -24,6 +25,50 @@ router.post('/register',async(ctx)=>{
       code:500,
       message:error
     }
+  })
+});
+
+/*用户登录*/
+router.post('/login',async(ctx)=>{
+  //得到前端传递过来的数据
+  let loginUser = ctx.request.body;
+  console.log(loginUser);
+  let userName = loginUser.userName;
+  let password = loginUser.password;
+  //引入User的model
+  const User = mongoose.model('User');
+  //查找用户名是否存在，如果存在开始比对密码
+  /*
+    Model.findOne([conditions], [projection], [options], [callback])
+    其中回调函数不能省略，否则数据不会被删除,所以使用 exec()简化代码
+  */
+  await User.findOne({userName:userName}).exec().then(async(result)=>{
+    console.log('result',result);
+    if(result){
+      //console.log(User)
+      //当用户名存在时，开始比对密码
+      let newUser = new User();  //因为是实例方法，所以要new出对象，才能调用
+      await newUser.comparePassword(password,result.password)
+        .then( (isMatch)=>{
+          //返回比对结果
+          if (isMatch) {
+            ctx.body={ code:200, message:isMatch}
+          } else {
+            ctx.body={ code:201, message:'密码不正确'}
+          }
+        })
+        .catch(error=>{
+          //出现异常，返回异常
+          console.log(error);
+          ctx.body={ code:500, message:error}
+        })
+    }else{
+      ctx.body={ code:301, message:'用户名不存在'}
+    }
+
+  }).catch(error=>{
+    console.log(error);
+    ctx.body={ code:500, message:error  }
   })
 });
 

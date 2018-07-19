@@ -66,7 +66,7 @@
       },
       toReg() {
         if (!this.check()) return;
-        let data = {username: this.username, password: this.password};
+        let data = {userName: this.username, password: this.password};
         let toast = this.$toast.loading({
           mask: true,
           message: '加载中...',

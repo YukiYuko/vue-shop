@@ -20,7 +20,7 @@
         required
       ></van-field>
       <div class="register-button">
-        <van-button @click="toReg" type="primary" size="large">马上登录</van-button>
+        <van-button :loading="openLoading" @click="toLogin" type="primary" size="large">马上登录</van-button>
       </div>
     </div>
 
@@ -28,28 +28,47 @@
 </template>
 
 <script>
-  import {register} from '../../ajax/api';
+  import localForage from "localforage"
+  import {login} from '../../ajax/api';
   export default {
     data() {
       return {
         username: '',
         password: '',
+        openLoading: false,
       }
     },
     methods: {
       goBack() {
         this.$router.go(-1)
       },
-      toReg() {
-        let data = {username: this.username, password: this.password};
-        // let toast = this.$toast.loading({
-        //   mask: true,
-        //   message: '加载中...',
-        //   duration: 0
-        // });
-        this.$dialog.alert({
-          message: '登录成功'
+      toLogin() {
+        let data = {userName: this.username, password: this.password};
+        let toast = this.$toast.loading({
+          mask: true,
+          message: '登录中...',
+          duration: 0
         });
+        this.openLoading = true;
+        login(data).then((res) => {
+          setTimeout(() => {
+            toast.clear();
+            if (res.code === 200) {
+              localForage.setItem('user_info', data, () => {
+                this.$toast.success('登录成功');
+                this.$router.push('/')
+              });
+            } else {
+              console.log(res.message);
+              this.openLoading = false;
+              this.$toast.fail(res.message)
+            }
+          }, 1000);
+        }).catch((error) => {
+          console.log(error);
+          this.openLoading = false;
+          this.$toast.fail('登录失败')
+        })
       }
     },
   }
