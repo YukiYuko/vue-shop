@@ -9,6 +9,7 @@
         icon="clear"
         placeholder="请输入用户名"
         required
+        :error-message="usernameErrorMsg"
         @click-icon="username = ''"
       ></van-field>
 
@@ -18,9 +19,10 @@
         label="密码"
         placeholder="请输入密码"
         required
+        :error-message="passwordErrorMsg"
       ></van-field>
       <div class="register-button">
-        <van-button @click="toReg" type="primary" size="large">马上注册</van-button>
+        <van-button :loading="openLoading" @click="toReg" type="primary" size="large">马上注册</van-button>
       </div>
     </div>
 
@@ -29,26 +31,50 @@
 
 <script>
   import {register} from '../../ajax/api';
+  import {isEmail, stringCheck} from '../../untils/validate'
   export default {
     data() {
       return {
         username: '',
         password: '',
+        openLoading: false,    //是否开启用户的Loading
+        usernameErrorMsg:'',   //当用户名出现错误的时候
+        passwordErrorMsg:'',   //当密码出现错误的时候
       }
     },
     methods: {
       goBack() {
         this.$router.go(-1)
       },
+      check() {
+        let valid = true;
+        if (!isEmail(this.username)) {
+          this.usernameErrorMsg = '请输入正确的邮箱格式!';
+          valid = false;
+        } else {
+          this.usernameErrorMsg = '';
+        }
+
+        if (!stringCheck(this.password)) {
+          this.passwordErrorMsg = '密码，只能包含中文、英文、数字、下划线等字符。';
+          valid = false;
+        } else {
+          this.passwordErrorMsg = '';
+        }
+
+        return valid
+      },
       toReg() {
+        if (!this.check()) return;
         let data = {username: this.username, password: this.password};
         let toast = this.$toast.loading({
           mask: true,
           message: '加载中...',
           duration: 0
         });
+        this.openLoading = true;
         register(data).then((res) => {
-          console.log(res)
+          console.log(res);
           setTimeout(() => {
             toast.clear();
             if (res.code === 200) {
@@ -61,6 +87,7 @@
               });
             } else {
               console.log(res.message);
+              this.openLoading = false;
               this.$toast.fail('注册失败')
             }
           }, 1000);

@@ -5,7 +5,7 @@ let router = new Router();
 
 //创建我们的用户Schema
 const userSchema = new Schema({
-  username:{unique:true,type:String},
+  username:String,
   password:String
 });
 router.get('/', async(ctx) => {
