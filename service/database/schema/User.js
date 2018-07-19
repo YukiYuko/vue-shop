@@ -7,12 +7,10 @@ const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 let ObjectId = Schema.Types.ObjectId;
 
-console.log(Schema.Types);
-
 //创建我们的用户Schema
 const userSchema = new Schema({
   UserId:ObjectId,
-  userName:{unique:true,type:String},
+  username:{unique:true,type:String},
   password:String,
   createAt:{type:Date,default:Date.now()},
   lastLoginAt:{type:Date,default:Date.now()}
@@ -34,6 +32,19 @@ userSchema.pre('save', function (next) {
     })
   })
 });
+
+// 对前端传回来的数据进行对比
+userSchema.methods = {
+  //密码比对的方法
+  comparePassword:(_password,password)=>{
+    return new Promise((resolve,reject)=>{
+      bcrypt.compare(_password,password,(err,isMatch)=>{
+        if(!err) resolve(isMatch);
+        else reject(err)
+      })
+    })
+  }
+};
 
 //发布模型
 mongoose.model('User',userSchema);
