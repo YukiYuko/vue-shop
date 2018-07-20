@@ -29,7 +29,7 @@ const options={
   disable: false, //禁用转场动画，默认为false，嵌套路由默认为true
   nuxt: false //若使用后端渲染框架Nuxt，需要将此设为true，默认为false
 };
-Vue.use(vueg, router, options);
+// Vue.use(vueg, router, options);
 
 Vue.use(VueAwesomeSwiper, /* { default global options } */);
 Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).

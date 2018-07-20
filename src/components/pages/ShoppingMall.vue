@@ -210,7 +210,9 @@
           if (!user_info && (page === 'car' || page === 'mine')) {
             this.$router.push('login');
           } else {
-            console.log('进入对应页面')
+            if (page === 'type') {
+              this.$router.push('CategoryList');
+            }
           }
         });
       }
@@ -223,6 +225,7 @@
 @import "../../styles/mixins";
 .home{
   background-color: @base_bg_color;
+  padding-bottom: 1rem;
   .search-bar{
     background-color: @base_color;
     padding: 0 0.2rem;

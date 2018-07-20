@@ -9,6 +9,8 @@ const url = {
   registerUser:localurl+`${user_prefix}/register`,   //用户注册接口
   login:localurl+`${user_prefix}/login`,   //用户登录接口
   goods:localurl+`${goods_prefix}/getDetailGoodsInfo`,   //商品详情
+  getCategoryList:localurl+`${goods_prefix}/getCategoryList`,  //得到大类信息
+  getCategorySubList:localurl+`${goods_prefix}/getCategorySubList`,  //得到小类信息
 };
 
 /*
@@ -35,3 +37,14 @@ export const login = (param) => api.post(url.login, param);
 * @params goodsId
 * */
 export const goods = (param) => api.post(url.goods, param);
+
+/*
+* 获取商品大类
+* */
+export const getCategoryList = () => api.get(url.getCategoryList);
+
+/*
+* 获取商品小类
+* @params categoryId
+* */
+export const getCategorySubList = (param) => api.post(url.getCategorySubList, param);
