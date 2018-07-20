@@ -116,6 +116,7 @@
               :goodsImage="item.image"
               :goodsName="item.name"
               :goodsPrice="item.price"
+              :goodsId="item.goodsId"
             ></goods-info>
           </div>
         </van-list>

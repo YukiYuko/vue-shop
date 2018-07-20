@@ -10,7 +10,7 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {path: '/',name: 'ShoppingMall',component: ShoppingMall},
-    {path: '/goods/:id',name: 'goods',component: Goods},
+    {path: '/goods/:id',name: 'Goods',component: Goods},
     {path: '/register',name: 'register',component: Register},
     {path: '/login',name: 'login',component: Login}
   ]
