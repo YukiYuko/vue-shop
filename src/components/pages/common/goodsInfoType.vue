@@ -1,7 +1,7 @@
 <template>
   <div class="goods-info" @click="goGoodsPage()">
     <div class="goods-image">
-      <img v-lazy="goodsImage"/>
+      <img v-lazy="goodsImage" onerror="this.src = errorImg"/>
     </div>
     <div class="goods-name">{{goodsName}}</div>
     <div class="goods-price">
@@ -18,6 +18,11 @@
     filters:{
       moneyFilter(money){
         return toMoney(money)
+      }
+    },
+    data () {
+      return {
+        errorImg:require('../../../assets/images/error.png')
       }
     },
     methods: {

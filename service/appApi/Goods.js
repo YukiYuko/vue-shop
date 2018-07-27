@@ -126,8 +126,12 @@ router.post('/getCategorySubList',async(ctx)=>{
 router.post('/getGoodsListByCategorySubID',async(ctx)=>{
   try{
     let categorySubId = ctx.request.body.categorySubId;
+    let page =ctx.request.body.page;
+    let num = 10; //每页显示数量
+    let start = (page-1)*num;
     const Goods = mongoose.model('Goods');
-    let result = await Goods.find({SUB_ID:categorySubId}).exec();
+    let result = await Goods.find({SUB_ID:categorySubId})
+      .skip(start).limit(num).exec();
     ctx.body={code:200,message:'成功', data: result}
   }catch(err){
     ctx.body={code:500,message:'失败', data: err}

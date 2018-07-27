@@ -63,7 +63,8 @@
         checked_price: false,
         loading: false,
         finished: false,
-        isLoading: false
+        isLoading: false,
+        page: 1
       }
     },
     components: {
@@ -81,26 +82,44 @@
         let res_CategorySub = await getCategorySubList({categoryId: this.categoryId});
         this.list_sub = res_CategorySub.data;
         this.categoryId_sub = this.list_sub[0].ID;
-        let res_goods = await getGoodsListByCategorySubID({categorySubId: this.categoryId_sub});
+        let res_goods = await getGoodsListByCategorySubID({categorySubId: this.categoryId_sub, page: this.page});
         this.list_goods = res_goods.data;
         setTimeout(() => {
-          this.isLoading = false;
           toast.clear();
+          this._initdata();
         }, 1000);
       },
+      _initdata () {
+        this.isLoading = false;
+        this.page = 1;
+      },
       // 上拉加载
-      onLoad() {
-        setTimeout(() => {
+      async onLoad() {
+        if (this.page > 3) {
+          return
+        }
+        this.page++;
+        let toast = this.$toast.loading('加载中...');
+        let res_goods = await getGoodsListByCategorySubID({categorySubId: this.categoryId_sub, page: this.page});
+        if (!res_goods.data.length) {
+          this.finished = true;
           this.loading = false;
-          this.list_goods = [...this.list_goods, ...this.list_goods];
-          if (this.list_goods.length >= 30) {
-            this.finished = true;
-          }
-        }, 2000);
+        }
+        this.list_goods = [...this.list_goods,...res_goods.data];
+        toast.clear();
       },
       // 下拉刷新
-      onRefresh () {
-        this.init();
+      async onRefresh () {
+        this.page = 1;
+        let toast = this.$toast.loading('加载中...');
+        let res_goods = await getGoodsListByCategorySubID({categorySubId: this.categoryId_sub, page: this.page});
+        this.list_goods = res_goods.data;
+        setTimeout(() =>{
+          this.isLoading = false;
+          toast.clear();
+          this.loading = false;
+          this.finished = false;
+        }, 1000);
       },
       // 切换大类
       switch_item (index, categoryId) {
