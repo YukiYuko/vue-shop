@@ -123,10 +123,9 @@ router.post('/getCategorySubList',async(ctx)=>{
 });
 
 //****根据商品类别获取商品列表
-router.get('/getGoodsListByCategorySubID',async(ctx)=>{
+router.post('/getGoodsListByCategorySubID',async(ctx)=>{
   try{
-    //let categorySubId = ctx.request.body.categoryId
-    let categorySubId = '2c9f6c946016ea9b016016f79c8e0000';
+    let categorySubId = ctx.request.body.categorySubId;
     const Goods = mongoose.model('Goods');
     let result = await Goods.find({SUB_ID:categorySubId}).exec();
     ctx.body={code:200,message:'成功', data: result}

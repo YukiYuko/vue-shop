@@ -7,7 +7,7 @@ import vueg from 'vueg'
 import 'vueg/css/transition-min.css'
 import {
   Button, Row, Col, Swipe, SwipeItem, Lazyload, List, Toast, Tabbar, TabbarItem,
-  NavBar, Field, Dialog, Tab, Tabs
+  NavBar, Field, Dialog, Tab, Tabs, Switch, PullRefresh
 } from 'vant'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
@@ -34,7 +34,8 @@ const options={
 Vue.use(VueAwesomeSwiper, /* { default global options } */);
 Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).
 use(Lazyload).use(List).use(Toast).use(Tabbar).use(TabbarItem).
-use(NavBar).use(Field).use(Dialog).use(Tab).use(Tabs);
+use(NavBar).use(Field).use(Dialog).use(Tab).use(Tabs).use(Switch).
+use(PullRefresh);
 
 Vue.config.productionTip = false;
 

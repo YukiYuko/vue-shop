@@ -23,29 +23,13 @@
         </a>
       </div>
       <div box="1" class="right">
-        <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
-          <van-list v-model="loading" :finished="finished" @load="onLoad" :immediate-check="false">
-            <div class="goods-list" style="overflow: hidden;">
-              <goods-info-type
-                v-for="( item, index) in list_goods" :key="index"
-                :goodsImage="item.IMAGE1"
-                :goodsName="item.NAME"
-                :goodsPrice="item.PRESENT_PRICE"
-                :goodsId="item.ID"
-                :goodsPriceOrigin="item.ORI_PRICE"
-              ></goods-info-type>
-            </div>
-          </van-list>
-          <divider v-if="finished" content="没有更多数据了QAQ"></divider>
-        </van-pull-refresh>
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import goodsInfoType from './common/goodsInfoType'
-  import divider from '../public/divider/divider'
   import {getCategoryList, getCategorySubList, getGoodsListByCategorySubID} from '../../ajax/api';
   export default {
     name: "CategoryList",
@@ -53,70 +37,60 @@
       return {
         list: [],
         list_sub: [],
-        list_goods: [],
         type_index: 0,
         type_index_sub: 0,
         categoryId: 1,
         categoryId_sub: '',
         active: 0,
         checked_ceil: false,
-        checked_price: false,
-        loading: false,
-        finished: false,
-        isLoading: false
+        checked_price: false
       }
     },
-    components: {
-      goodsInfoType, divider
-    },
+    components: {},
     mounted() {
-      this.init();
+      this.getCategory();
     },
     methods: {
       // 初始化数据
       async init () {
+      },
+      // 获取大类
+      async getCategory () {
         let toast = this.$toast.loading('加载中...');
-        let res_Category = await getCategoryList();
-        this.list = res_Category.data;
-        let res_CategorySub = await getCategorySubList({categoryId: this.categoryId});
-        this.list_sub = res_CategorySub.data;
-        this.categoryId_sub = this.list_sub[0].ID;
-        let res_goods = await getGoodsListByCategorySubID({categorySubId: this.categoryId_sub});
-        this.list_goods = res_goods.data;
-        setTimeout(() => {
-          this.isLoading = false;
-          toast.clear();
-        }, 1000);
+        let res = await getCategoryList();
+        this.list = res.data;
+        toast.clear();
       },
-      // 上拉加载
-      onLoad() {
-        setTimeout(() => {
-          this.loading = false;
-          this.list_goods = [...this.list_goods, ...this.list_goods];
-          if (this.list_goods.length >= 30) {
-            this.finished = true;
-          }
-        }, 2000);
-      },
-      // 下拉刷新
-      onRefresh () {
-        this.init();
+      // 获取小类
+      getCategorySub () {
+        let toast = this.$toast.loading('加载中...');
+        getCategorySubList({categoryId: this.categoryId}).then((res) => {
+          this.list_sub = res.data;
+          this.categoryId_sub = this.list_sub[0].ID;
+          setTimeout(() => {
+            toast.clear();
+          }, 1000)
+        }).catch(() => {
+
+        })
       },
       // 切换大类
       switch_item (index, categoryId) {
         this.type_index = index;
         this.type_index_sub = 0;
         this.categoryId = categoryId;
-        this.init();
+        this.getCategorySub();
       },
       // 切换小类
-      async switch_item_sub (index, categoryId_sub) {
+      switch_item_sub (index, categoryId_sub) {
         this.type_index_sub = index;
         this.categoryId_sub = categoryId_sub;
-        let toast = this.$toast.loading('加载中...');
-        let res_goods = await getGoodsListByCategorySubID({categorySubId: this.categoryId_sub});
-        this.list_goods = res_goods.data;
-        toast.clear();
+      },
+      // 获取列表
+      getList () {
+        getGoodsListByCategorySubID({categorySubId: this.categoryId_sub}).then((res) => {
+          console.log(res)
+        })
       }
     }
   }
@@ -143,8 +117,7 @@
   }
   .content{
     .left{
-      width: 1.8rem; background-color: #ffffff; height: 100%;
-      overflow: auto;
+      width: 1.8rem; background-color: #ffffff;
       a{
         height: 44px; line-height: 44px; text-align: center;
         display: block; color: @base_sub_color; font-size: 0.3rem;
@@ -154,8 +127,7 @@
       }
     }
     .right{
-      background-color: @base_bg_color; overflow: auto;
-      padding:5px;
+      background-color: @base_bg_color;
     }
   }
 }

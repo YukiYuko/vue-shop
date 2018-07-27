@@ -11,6 +11,7 @@ const url = {
   goods:localurl+`${goods_prefix}/getDetailGoodsInfo`,   //商品详情
   getCategoryList:localurl+`${goods_prefix}/getCategoryList`,  //得到大类信息
   getCategorySubList:localurl+`${goods_prefix}/getCategorySubList`,  //得到小类信息
+  getGoodsListByCategorySubID:localurl+`${goods_prefix}/getGoodsListByCategorySubID`,  //根据商品类别获取商品列表
 };
 
 /*
@@ -48,3 +49,9 @@ export const getCategoryList = () => api.get(url.getCategoryList);
 * @params categoryId
 * */
 export const getCategorySubList = (param) => api.post(url.getCategorySubList, param);
+
+/*
+* 获取商品列表
+* @params categorySubId
+* */
+export const getGoodsListByCategorySubID = (param) => api.post(url.getGoodsListByCategorySubID, param);
