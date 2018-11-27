@@ -54,6 +54,7 @@ exports.connect = ()=>{
 
 exports.initSchemas = () =>{
   // __dirname 表示当前执行脚本所在的目录。
+  // **: 不是一个单独的路径中的某部分,而是可以带有'/',所以所有当前文件夹和子文件夹下都进行匹配
   // 同步获取匹配文件列表:
   let files = glob.sync(resolve(__dirname,'./schema/','**/*.js'));
   console.log('同步获取匹配文件列表',files);
