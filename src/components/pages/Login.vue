@@ -30,6 +30,7 @@
 <script>
   import localForage from "localforage"
   import {login} from '../../ajax/api';
+  import type from '../../untils/type'
   export default {
     data() {
       return {
@@ -49,6 +50,9 @@
           }, 1000);
         }
       })
+    },
+    mounted () {
+      console.log(type.checkStr(13548191041, 'phone'))
     },
     methods: {
       goBack() {

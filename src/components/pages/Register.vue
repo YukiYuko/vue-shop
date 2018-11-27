@@ -32,14 +32,15 @@
 <script>
   import {register} from '../../ajax/api';
   import {isEmail, stringCheck} from '../../untils/validate'
+  import {usernameErrorMsg, passwordErrorMsg} from '../../untils/errorMsg'
   export default {
     data() {
       return {
         username: '',
         password: '',
         openLoading: false,    //是否开启用户的Loading
-        usernameErrorMsg:'',   //当用户名出现错误的时候
-        passwordErrorMsg:'',   //当密码出现错误的时候
+        usernameErrorMsg: '',   //当用户名出现错误的时候
+        passwordErrorMsg: '',   //当密码出现错误的时候
       }
     },
     methods: {
@@ -49,14 +50,14 @@
       check() {
         let valid = true;
         if (!isEmail(this.username)) {
-          this.usernameErrorMsg = '请输入正确的邮箱格式!';
+          this.usernameErrorMsg = usernameErrorMsg;
           valid = false;
         } else {
           this.usernameErrorMsg = '';
         }
 
         if (!stringCheck(this.password)) {
-          this.passwordErrorMsg = '密码，只能包含中文、英文、数字、下划线等字符。';
+          this.passwordErrorMsg = passwordErrorMsg;
           valid = false;
         } else {
           this.passwordErrorMsg = '';
