@@ -129,6 +129,8 @@ class TypeFn {
 
   checkStr (str, type) {
     switch (type) {
+      case 'name':
+        return /^[a-zA-Z0-9_-]{4,16}$/.test(str);
       case 'phone':   //手机号码
         return /^1[3|4|5|6|7|8][0-9]{9}$/.test(str);
       case 'tel':     //座机
